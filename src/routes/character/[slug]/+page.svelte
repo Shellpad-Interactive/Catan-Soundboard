@@ -19,6 +19,8 @@
 			}
 		);
 		audioFileEntries = Object.entries(audioFileRecords).map((x) => ({ src: x[0], path: x[1].default }));
+
+		console.log(audioFileEntries);
 	});
 
 	function loadAudioCategory(category: string) {
