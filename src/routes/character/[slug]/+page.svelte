@@ -1,35 +1,49 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import Button from '$lib/components/atoms/Button.svelte';
+	import { getRandomInt } from '$lib/util/random.util';
 	import { onMount } from 'svelte';
 
 	$: slug = page.params.slug || '';
 
-	let audioFilePaths: string[];
+	let audioFileEntries: { src: string; path: string }[];
 	let audio: { [category: string]: HTMLAudioElement[] } = {};
 	let lastPlayedIndices: { [category: string]: number } = {};
 
 	onMount(() => {
-		const audioFileRecords = import.meta.glob('$lib/assets/audio/**/*.{mp3,wav,ogg}', { as: 'query', eager: true });
-		audioFilePaths = Object.keys(audioFileRecords);
-
-		console.log({ audioFilePaths });
-
-		loadAudioCategory('angry');
+		const audioFileRecords: Record<string, { default: string }> = import.meta.glob(
+			'$lib/assets/audio/**/*.{mp3,wav,ogg}',
+			{
+				query: 'query',
+				eager: true
+			}
+		);
+		audioFileEntries = Object.entries(audioFileRecords).map((x) => ({ src: x[0], path: x[1].default }));
 	});
 
 	function loadAudioCategory(category: string) {
-		const categoryPaths = audioFilePaths.filter((x) => x.includes(`${slug}/${category}`));
-		audio[category] = categoryPaths.map((path) => new Audio(path));
+		const categoryPaths = audioFileEntries.filter((x) => x.src.includes(`${slug}/${category}`));
+		audio[category] = categoryPaths.map((x) => new Audio(x.path));
+	}
+
+	function getAudioOptions(category: string) {
+		if (!audio[category]) {
+			loadAudioCategory(category);
+		}
+
+		return audio[category];
 	}
 
 	function playRandomAudio(category: string) {
-		const audioOptions = audio[category];
+		const audioOptions = getAudioOptions(category);
 
-		// Make sure we don't play the same index twice in a row (WIP)
-		const lastPlayedIndex = lastPlayedIndices[category] || 0;
-		const randomIndex =
-			(lastPlayedIndex + Math.floor(Math.random() * (audioOptions.length - 1)) + 1) % audioOptions.length;
+		let randomIndex = getRandomInt(0, audioOptions.length);
+
+		// Make sure we don't play the same index twice in a row
+		const lastPlayedIndex = lastPlayedIndices[category];
+		if (lastPlayedIndex >= 0) {
+			randomIndex = (lastPlayedIndex + getRandomInt(1, audioOptions.length)) % audioOptions.length;
+		}
 		lastPlayedIndices[category] = randomIndex;
 
 		const randomSample = audioOptions[randomIndex];
