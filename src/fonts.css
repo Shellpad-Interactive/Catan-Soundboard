@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'Catan';
+	src: url('/src/lib/assets/fonts/pink-bunny.2.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('/src/lib/assets/fonts/EB-Garamond/EBGaramond-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}

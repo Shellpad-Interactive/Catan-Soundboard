@@ -35,8 +35,8 @@
 	}
 </script>
 
-<main>
-	<h1>Character {slug}</h1>
+<main class="container mx-auto flex flex-col items-center justify-center py-5">
+	<h1 class="mb-5 capitalize">{slug}</h1>
 	<div class="grid-cols-3">
 		<Button on:click={() => playRandomAudio('angry')}>Angry</Button>
 		<Button>Audio 1</Button>
