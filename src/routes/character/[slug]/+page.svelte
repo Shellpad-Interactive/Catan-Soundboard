@@ -10,8 +10,10 @@
 	let lastPlayedIndices: { [category: string]: number } = {};
 
 	onMount(() => {
-		const audioFileRecords = import.meta.glob('$lib/assets/audio/**/*.{mp3,wav,ogg}', { eager: true });
+		const audioFileRecords = import.meta.glob('$lib/assets/audio/**/*.{mp3,wav,ogg}', { as: 'query', eager: true });
 		audioFilePaths = Object.keys(audioFileRecords);
+
+		console.log({ audioFilePaths });
 
 		loadAudioCategory('angry');
 	});
