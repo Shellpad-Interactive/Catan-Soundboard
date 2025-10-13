@@ -3,7 +3,7 @@
 </script>
 
 <a
-	href={`character/${character}`}
+	href={`character/${character.toLocaleLowerCase()}`}
 	title={`${character}`}
 	class="btn-character group relative aspect-video h-20 rounded border-4 border-catan-yellow md:h-32"
 >

@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 
 	$: slug = page.params.slug || '';
+	$: character = slug.toLocaleLowerCase();
 
 	let audioFileEntries: { src: string; path: string }[];
 	let audio: { [category: string]: HTMLAudioElement[] } = {};
@@ -19,12 +20,10 @@
 			}
 		);
 		audioFileEntries = Object.entries(audioFileRecords).map((x) => ({ src: x[0], path: x[1].default }));
-
-		console.log(audioFileEntries);
 	});
 
 	function loadAudioCategory(category: string) {
-		const categoryPaths = audioFileEntries.filter((x) => x.src.includes(`${slug}/${category}`));
+		const categoryPaths = audioFileEntries.filter((x) => x.src.includes(`${character}/${category}`));
 		audio[category] = categoryPaths.map((x) => new Audio(x.path));
 	}
 
@@ -54,7 +53,7 @@
 </script>
 
 <main class="container mx-auto flex flex-col items-center justify-center py-5">
-	<h1 class="mb-5 capitalize">{slug}</h1>
+	<h1 class="mb-5 capitalize">{character}</h1>
 	<div class="grid-cols-3">
 		<Button on:click={() => playRandomAudio('angry')}>Angry</Button>
 		<Button>Audio 1</Button>
