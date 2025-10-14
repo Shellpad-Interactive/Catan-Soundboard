@@ -21,3 +21,12 @@ h6 {
 h1 {
 	@apply text-6xl drop-shadow;
 }
+
+.stroke-dark-red {
+	--stroke-color: #110204;
+	text-shadow:
+		-1px -1px 0 var(--stroke-color),
+		1px -1px 0 var(--stroke-color),
+		-1px 1px 0 var(--stroke-color),
+		1px 1px 0 var(--stroke-color);
+}

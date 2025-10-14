@@ -5,6 +5,7 @@ export default {
 		extend: {
 			colors: {
 				'catan-red': '#b71f2e',
+				'catan-red-dark': '#110204',
 				'catan-yellow': '#fbc105',
 				'catan-orange': '#f07629'
 			}

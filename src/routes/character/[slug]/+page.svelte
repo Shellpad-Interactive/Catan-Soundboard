@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import AudioButton from '$lib/components/atoms/AudioButton.svelte';
 	import Button from '$lib/components/atoms/Button.svelte';
 	import { getRandomInt } from '$lib/util/random.util';
 	import { onMount } from 'svelte';
@@ -52,11 +53,27 @@
 	}
 </script>
 
-<main class="container mx-auto flex flex-col items-center justify-center py-5">
-	<h1 class="mb-5 capitalize">{character}</h1>
-	<div class="grid-cols-3">
-		<Button on:click={() => playRandomAudio('angry')}>Angry</Button>
-		<Button>Audio 1</Button>
-		<Button>Audio 1</Button>
+<main class="container relative mx-auto flex flex-col items-center justify-center px-2 pb-5">
+	<a href="/"><Button class="absolute left-2 top-2">↩ Back</Button></a>
+
+	<div class="relative mb-5">
+		<img src={`/src/lib/assets/images/${character}.png`} alt={character} class="h-40" />
+		<h1
+			class="stroke-dark-red absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap text-center capitalize drop-shadow"
+		>
+			{character}
+		</h1>
+	</div>
+	<div class="grid auto-rows-[120px] grid-cols-2 gap-5 md:grid-cols-3">
+		<AudioButton on:click={() => playRandomAudio('angry')}>Super!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Wat een ellende</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Och nee...</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Ik denk na...</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Ik waarschuw jullie allen</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Wacht even!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Schiet eens op, zeg!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Ik wil met jou handelen!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Je bent een #!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('angry')}>Hartelijk dank!</AudioButton>
 	</div>
 </main>
