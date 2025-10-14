@@ -57,7 +57,7 @@
 	<a href="/"><Button class="absolute left-2 top-2">↩ Back</Button></a>
 
 	<div class="relative mb-5">
-		<img src={`/src/lib/assets/images/${character}.png`} alt={character} class="h-40" />
+		<img src={`/images/${character.toLowerCase()}.png`} alt={character} class="h-40" />
 		<h1
 			class="stroke-dark-red absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap text-center capitalize drop-shadow"
 		>

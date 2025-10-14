@@ -9,7 +9,7 @@
 >
 	<div class="btn-character__bg absolute h-full w-full saturate-50 transition-all group-hover:saturate-100"></div>
 	<img
-		src={`/src/lib/assets/images/${character}.png`}
+		src={`/images/${character.toLowerCase()}.png`}
 		alt={character}
 		class="absolute left-1/2 h-full -translate-x-1/2"
 	/>
