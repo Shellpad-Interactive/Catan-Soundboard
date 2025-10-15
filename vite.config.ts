@@ -9,7 +9,7 @@ export default defineConfig({
 			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH || '',
 			strategies: 'injectManifest',
 			srcDir: 'src',
-			filename: 'prompt-sw.ts',
+			filename: 'service-worker.ts',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
 			includeAssets: ['favicon.jpg'],
