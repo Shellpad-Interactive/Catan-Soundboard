@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { asset } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import AudioButton from '$lib/components/atoms/AudioButton.svelte';
 	import Button from '$lib/components/atoms/Button.svelte';
@@ -55,7 +55,7 @@
 </script>
 
 <main class="container relative mx-auto flex flex-col items-center justify-center px-2 pb-5">
-	<a href="/"><Button class="absolute left-2 top-2">↩ Back</Button></a>
+	<a href={resolve('/')}><Button class="absolute left-2 top-2">↩ Back</Button></a>
 
 	<div class="relative mb-5">
 		<img src={asset(`/images/${character.toLowerCase()}.png`)} alt={character} class="h-40" />

@@ -1,10 +1,10 @@
 <script lang="ts">
 	export let character: string;
-	import { asset } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 </script>
 
 <a
-	href={`character/${character.toLocaleLowerCase()}`}
+	href={resolve(`/character/${character.toLocaleLowerCase()}`)}
 	title={`${character}`}
 	class="btn-character group relative aspect-video h-full w-full rounded border-4 border-catan-yellow"
 >
