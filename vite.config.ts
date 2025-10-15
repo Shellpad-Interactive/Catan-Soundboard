@@ -7,6 +7,7 @@ export default defineConfig({
 		sveltekit(),
 		VitePWA({
 			registerType: 'autoUpdate',
+			injectRegister: 'auto',
 			includeAssets: ['favicon.jpg'],
 			manifest: {
 				name: 'Catan Soundboard',
