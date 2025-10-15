@@ -54,7 +54,7 @@
 </script>
 
 <main class="container relative mx-auto flex flex-col items-center justify-center px-2 pb-5">
-	<a href="/"><Button class="absolute left-2 top-2">↩ Back</Button></a>
+	<a href="/Catan-Soundboard"><Button class="absolute left-2 top-2">↩ Back</Button></a>
 
 	<div class="relative mb-5">
 		<img src={`/images/${character.toLowerCase()}.png`} alt={character} class="h-40" />
