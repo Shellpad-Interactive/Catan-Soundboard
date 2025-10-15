@@ -6,6 +6,7 @@ export default defineConfig({
 	plugins: [
 		sveltekit(),
 		VitePWA({
+			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH || '',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
 			includeAssets: ['favicon.jpg'],
