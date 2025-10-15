@@ -7,6 +7,9 @@ export default defineConfig({
 		sveltekit(),
 		VitePWA({
 			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH || '',
+			strategies: 'injectManifest',
+			srcDir: 'src',
+			filename: 'prompt-sw.ts',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
 			includeAssets: ['favicon.jpg'],
