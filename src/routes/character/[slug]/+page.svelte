@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { asset } from '$app/paths';
 	import { page } from '$app/state';
 	import AudioButton from '$lib/components/atoms/AudioButton.svelte';
 	import Button from '$lib/components/atoms/Button.svelte';
@@ -54,10 +55,10 @@
 </script>
 
 <main class="container relative mx-auto flex flex-col items-center justify-center px-2 pb-5">
-	<a href="/Catan-Soundboard"><Button class="absolute left-2 top-2">↩ Back</Button></a>
+	<a href="/"><Button class="absolute left-2 top-2">↩ Back</Button></a>
 
 	<div class="relative mb-5">
-		<img src={`/images/${character.toLowerCase()}.png`} alt={character} class="h-40" />
+		<img src={asset(`/images/${character.toLowerCase()}.png`)} alt={character} class="h-40" />
 		<h1
 			class="stroke-dark-red absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap text-center capitalize drop-shadow"
 		>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let character: string;
+	import { asset } from '$app/paths';
 </script>
 
 <a
@@ -9,7 +10,7 @@
 >
 	<div class="btn-character__bg absolute h-full w-full saturate-50 transition-all group-hover:saturate-100"></div>
 	<img
-		src={`/images/${character.toLowerCase()}.png`}
+		src={asset(`/images/${character.toLowerCase()}.png`)}
 		alt={character}
 		class="absolute left-1/2 h-full -translate-x-1/2"
 	/>
