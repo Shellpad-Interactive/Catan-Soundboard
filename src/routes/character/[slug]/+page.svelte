@@ -66,15 +66,15 @@
 		</h1>
 	</div>
 	<div class="grid auto-rows-[120px] grid-cols-2 gap-5 md:grid-cols-3">
-		<AudioButton on:click={() => playRandomAudio('angry')}>Super!</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Wat een ellende</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Och nee...</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Ik denk na...</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Ik waarschuw jullie allen</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Wacht even!</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Schiet eens op, zeg!</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Ik wil met jou handelen!</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Je bent een #!</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('angry')}>Hartelijk dank!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('super')}>Super!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('wat een ellende')}>Wat een ellende</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('och nee')}>Och nee...</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('ik denk na')}>Ik denk na...</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('ik waarschuw jullie allen')}>Ik waarschuw jullie allen</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('wacht even')}>Wacht even!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('schiet eens op zeg')}>Schiet eens op, zeg!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('ik wil met jou handelen')}>Ik wil met jou handelen!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('je bent een')}>Je bent een #!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('wat een ellende')}>Hartelijk dank!</AudioButton>
 	</div>
 </main>
