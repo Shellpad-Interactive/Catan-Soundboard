@@ -9,7 +9,7 @@ export default defineConfig({
 		sveltekit(),
 		VitePWA({
 			base: basePath,
-			strategies: 'injectManifest',
+			strategies: 'generateSW',
 			srcDir: 'src',
 			scope: './',
 			filename: 'service-worker.js',
