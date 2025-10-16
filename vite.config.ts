@@ -2,7 +2,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-const basePath = '/Catan-Soundboard'; //process.argv.includes('dev') ? '' : process.env.BASE_PATH || '';
+const basePath = process.argv.includes('dev') ? '' : process.env.BASE_PATH || '';
 
 export default defineConfig({
 	plugins: [
@@ -18,7 +18,7 @@ export default defineConfig({
 			manifest: {
 				name: 'Catan Soundboard',
 				short_name: 'Catan SB',
-				start_url: '/',
+				start_url: `${basePath}/`,
 				display: 'standalone',
 				background_color: '#fbc105',
 				theme_color: '#fbc105',
