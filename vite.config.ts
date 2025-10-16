@@ -19,7 +19,7 @@ export default defineConfig({
 			manifest: {
 				name: 'Catan Soundboard',
 				lang: 'nl',
-				short_name: 'Catan SB',
+				short_name: 'Catan Soundboard',
 				background_color: '#fbc105',
 				theme_color: '#fbc105',
 				display: 'standalone',
