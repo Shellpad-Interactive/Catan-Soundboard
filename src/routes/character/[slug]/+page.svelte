@@ -75,6 +75,6 @@
 		<AudioButton on:click={() => playRandomAudio('schiet eens op zeg')}>Schiet eens op, zeg!</AudioButton>
 		<AudioButton on:click={() => playRandomAudio('ik wil met jou handelen')}>Ik wil met jou handelen!</AudioButton>
 		<AudioButton on:click={() => playRandomAudio('je bent een')}>Je bent een #!</AudioButton>
-		<AudioButton on:click={() => playRandomAudio('wat een ellende')}>Hartelijk dank!</AudioButton>
+		<AudioButton on:click={() => playRandomAudio('hartelijk dank')}>Hartelijk dank!</AudioButton>
 	</div>
 </main>
