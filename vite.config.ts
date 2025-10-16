@@ -11,17 +11,21 @@ export default defineConfig({
 			base: basePath,
 			strategies: 'injectManifest',
 			srcDir: 'src',
+			scope: './',
 			filename: 'service-worker.ts',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
 			includeAssets: ['favicon.jpg'],
 			manifest: {
 				name: 'Catan Soundboard',
+				lang: 'nl',
 				short_name: 'Catan SB',
-				start_url: `${basePath}/`,
-				display: 'standalone',
 				background_color: '#fbc105',
 				theme_color: '#fbc105',
+				display: 'standalone',
+				start_url: `./`,
+				scope: `./`,
+				description: 'Kolonisten van Catan soundboard',
 				icons: [
 					{
 						src: `${basePath}/favicon.jpg`,
