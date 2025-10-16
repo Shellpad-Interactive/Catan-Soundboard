@@ -21,14 +21,6 @@ precacheAndRoute(self.__WB_MANIFEST || []);
 // clean old assets
 cleanupOutdatedCaches();
 
-try {
-	const handler = createHandlerBoundToURL('/index.html');
-	const route = new NavigationRoute(handler);
-	registerRoute(route);
-} catch (e) {
-	console.warn('NavigationRoute skipped:', e);
-}
-
 // Runtime caching for audio assets (you already had this)
 registerRoute(({ request }) => request.destination === 'audio', new CacheFirst());
 
