@@ -15,7 +15,7 @@ export default defineConfig({
 			filename: 'service-worker.js',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
-			includeAssets: ['favicon.jpg'],
+			includeAssets: ['favicon.jpg', 'lib/assets/audio/**/*.{mp3,wav,ogg}'],
 			manifest: {
 				name: 'Catan Soundboard',
 				lang: 'nl',
