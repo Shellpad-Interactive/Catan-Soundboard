@@ -28,6 +28,11 @@ export default defineConfig({
 				description: 'Kolonisten van Catan soundboard',
 				icons: [
 					{
+						src: `${basePath}/favicon.webp`,
+						sizes: '192x192',
+						type: 'image/webp'
+					},
+					{
 						src: `${basePath}/favicon.jpg`,
 						sizes: '192x192',
 						type: 'image/jpeg'

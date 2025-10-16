@@ -15,6 +15,9 @@ const config = {
 		}),
 		paths: {
 			base: basePath
+		},
+		prerender: {
+			entries: ['*']
 		}
 	}
 };
