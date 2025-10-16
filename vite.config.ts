@@ -9,9 +9,9 @@ export default defineConfig({
 		sveltekit(),
 		VitePWA({
 			base: basePath,
-			strategies: 'generateSW',
+			strategies: 'injectManifest',
 			srcDir: 'src',
-			scope: './',
+			scope: `${basePath}/`,
 			filename: 'service-worker.js',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
@@ -23,8 +23,8 @@ export default defineConfig({
 				background_color: '#fbc105',
 				theme_color: '#fbc105',
 				display: 'standalone',
-				start_url: `./`,
-				scope: `./`,
+				start_url: `${basePath}/`,
+				scope: `${basePath}/`,
 				description: 'Kolonisten van Catan soundboard',
 				icons: [
 					{
