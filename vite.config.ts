@@ -12,7 +12,7 @@ export default defineConfig({
 			strategies: 'injectManifest',
 			srcDir: 'src',
 			scope: './',
-			filename: 'service-worker.ts',
+			filename: 'service-worker.js',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
 			includeAssets: ['favicon.jpg'],
