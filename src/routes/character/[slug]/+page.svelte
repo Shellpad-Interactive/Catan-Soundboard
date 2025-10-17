@@ -3,30 +3,25 @@
 	import { page } from '$app/state';
 	import AudioButton from '$lib/components/atoms/AudioButton.svelte';
 	import Button from '$lib/components/atoms/Button.svelte';
+	import type { AudioManifest } from '$lib/models/audio-manifest.model';
 	import { getRandomInt } from '$lib/util/random.util';
 	import { onMount } from 'svelte';
 
 	$: slug = page.params.slug || '';
 	$: character = slug.toLocaleLowerCase();
 
-	let audioFileEntries: { src: string; path: string }[];
+	let audioManifest: AudioManifest;
 	let audio: { [category: string]: HTMLAudioElement[] } = {};
 	let lastPlayedIndices: { [category: string]: number } = {};
 
-	onMount(() => {
-		const audioFileRecords: Record<string, { default: string }> = import.meta.glob(
-			'$lib/assets/audio/**/*.{mp3,wav,ogg}',
-			{
-				query: 'query',
-				eager: true
-			}
-		);
-		audioFileEntries = Object.entries(audioFileRecords).map((x) => ({ src: x[0], path: x[1].default }));
+	onMount(async () => {
+		const res = await fetch('/audio-manifest.json');
+		audioManifest = await res.json();
 	});
 
 	function loadAudioCategory(category: string) {
-		const categoryPaths = audioFileEntries.filter((x) => x.src.includes(`${character}/${category}`));
-		audio[category] = categoryPaths.map((x) => new Audio(x.path));
+		const categoryPaths = audioManifest[character][category];
+		audio[category] = categoryPaths.map((path) => new Audio(path));
 	}
 
 	function getAudioOptions(category: string) {
