@@ -21,7 +21,7 @@
 
 	function loadAudioCategory(category: string) {
 		const categoryPaths = audioManifest[character][category];
-		audio[category] = categoryPaths.map((path) => new Audio(path));
+		audio[category] = categoryPaths.map((path) => new Audio(asset(path)));
 	}
 
 	function getAudioOptions(category: string) {
