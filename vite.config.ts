@@ -10,9 +10,9 @@ export default defineConfig({
 		VitePWA({
 			base: basePath,
 			strategies: 'injectManifest',
-			srcDir: 'src',
+			srcDir: '.',
+			filename: 'service-worker.ts',
 			scope: `${basePath}/`,
-			filename: 'service-worker.js',
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
 			includeAssets: ['favicon.jpg', 'lib/assets/audio/**/*.{mp3,wav,ogg}'],
