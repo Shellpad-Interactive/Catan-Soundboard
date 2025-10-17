@@ -15,19 +15,48 @@ self.addEventListener('message', (event) => {
 });
 clientsClaim();
 
+// Precache all assets defined in the manifest
 precacheAndRoute(self.__WB_MANIFEST || []);
 
-// clean old assets
+// Clean old assets
 cleanupOutdatedCaches();
 
-// Runtime caching for audio assets (you already had this)
-registerRoute(({ request }) => request.destination === 'audio', new CacheFirst());
+// Cache audio files with CacheFirst strategy
+registerRoute(
+	({ request }) => request.destination === 'audio',
+	new CacheFirst({
+		cacheName: 'audio-cache'
+	})
+);
 
-// Runtime caching for images (e.g., JPG, PNG, etc.)
-registerRoute(({ request }) => request.destination === 'image', new CacheFirst());
+// Cache images with CacheFirst strategy
+registerRoute(
+	({ request }) => request.destination === 'image',
+	new CacheFirst({
+		cacheName: 'image-cache'
+	})
+);
 
-// Runtime caching for scripts and styles (optional, improves offline but keep updated)
+// Cache fonts with CacheFirst strategy
+registerRoute(
+	({ request }) => request.destination === 'font',
+	new CacheFirst({
+		cacheName: 'font-cache'
+	})
+);
+
+// Cache pages with StaleWhileRevalidate
+registerRoute(
+	({ request }) => request.destination === 'document',
+	new StaleWhileRevalidate({
+		cacheName: 'page-cache'
+	})
+);
+
+// Cache scripts and styles with StaleWhileRevalidate
 registerRoute(
 	({ request }) => request.destination === 'script' || request.destination === 'style',
-	new StaleWhileRevalidate()
+	new StaleWhileRevalidate({
+		cacheName: 'static-resources'
+	})
 );

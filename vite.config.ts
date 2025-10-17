@@ -15,7 +15,12 @@ export default defineConfig({
 			scope: `${basePath}/`,
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
-			includeAssets: ['favicon.jpg', 'lib/assets/audio/**/*.{mp3,wav,ogg}'],
+			includeAssets: [
+				'favicon.jpg',
+				'images/*.{png,jpg,webp}',
+				'lib/assets/audio/**/*.{mp3,wav,ogg}',
+				'lib/assets/fonts/**/*.{ttf,woff,woff2}'
+			],
 			manifest: {
 				name: 'Catan Soundboard',
 				lang: 'nl',
@@ -40,7 +45,7 @@ export default defineConfig({
 				]
 			},
 			workbox: {
-				navigateFallback: '/404.html',
+				navigateFallback: `${basePath}/404.html`,
 				globPatterns: ['**/*.{js,css,html,ico,jpg,png,mp3,wav,ogg}']
 			}
 		})
