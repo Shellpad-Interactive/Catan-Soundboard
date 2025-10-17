@@ -15,7 +15,7 @@
 	let lastPlayedIndices: { [category: string]: number } = {};
 
 	onMount(async () => {
-		const res = await fetch('/audio-manifest.json');
+		const res = await fetch(asset('/audio-manifest.json'));
 		audioManifest = await res.json();
 	});
 
