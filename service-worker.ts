@@ -60,3 +60,11 @@ registerRoute(
 		cacheName: 'static-resources'
 	})
 );
+
+// Cache audio manifewst
+registerRoute(
+	({ url }) => url.pathname === '/audio-manifest.json',
+	new StaleWhileRevalidate({
+		cacheName: 'manifest-cache'
+	})
+);
