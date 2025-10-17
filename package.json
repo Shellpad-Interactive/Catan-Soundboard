@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"generate:manifest": "node src/scripts/generate-audio-manifest.ts",
+		"generate:manifest": "node scripts/generate-audio-manifest.js",
 		"start:dev": "npm run generate:manifest && vite dev",
 		"build": "npm run generate:manifest && vite build",
 		"preview": "vite preview",

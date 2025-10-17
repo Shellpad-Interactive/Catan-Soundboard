@@ -1,4 +1,3 @@
-import type { AudioManifest } from '$lib/models/audio-manifest.model';
 import fs from 'fs';
 import path from 'path';
 
@@ -7,7 +6,7 @@ const outputFile = path.resolve('static/audio-manifest.json');
 let filesFound = 0;
 
 // Recursive function to walk directories
-function getAudioFiles(dir: string, base = '', output: AudioManifest = {}) {
+function getAudioFiles(dir, base = '', output = {}) {
 	const entries = fs.readdirSync(dir, { withFileTypes: true });
 
 	for (const entry of entries) {
