@@ -40,8 +40,8 @@ export default defineConfig({
 				]
 			},
 			workbox: {
-				navigateFallback: `${basePath}/404.html`,
-				globPatterns: ['**/*.{js,css,html,ico,jpg,png,mp3,wav,ogg}']
+				navigateFallback: `${basePath}/index.html`,
+				globPatterns: ['**/*.{js,css,html,ico,jpg,png,webp,svg,mp3,wav,ogg,json}']
 			}
 		})
 	]
