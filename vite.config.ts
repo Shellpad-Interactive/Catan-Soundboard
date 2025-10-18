@@ -16,7 +16,13 @@ export default defineConfig({
 			scope: `${basePath}/`,
 			registerType: 'autoUpdate',
 			injectRegister: 'auto',
-			includeAssets: ['favicon.jpg', 'audio-manifest.json', 'images/*.{png,jpg,webp}', 'audio/**/*.{mp3,wav,ogg}'],
+			includeAssets: [
+				'favicon.jpg',
+				'audio-manifest.json',
+				'images/*.{png,jpg,webp}',
+				'audio/**/*.{mp3,wav,ogg}',
+				'fonts/**/*.{ttf,woff,woff2,otf}'
+			],
 			manifest: {
 				name: 'Catan Soundboard',
 				lang: 'nl',

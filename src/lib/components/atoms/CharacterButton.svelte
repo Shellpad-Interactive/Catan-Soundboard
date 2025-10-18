@@ -24,7 +24,7 @@
 	.btn-character {
 		&__bg {
 			background-size: 100% 100%;
-			background-image: url('/src/lib/assets/images/catan.jpg');
+			background-image: url('/images/catan.jpg');
 		}
 	}
 </style>

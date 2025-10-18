@@ -46,7 +46,11 @@ registerRoute(
 
 // Cache fonts with CacheFirst strategy
 registerRoute(
-	({ request }) => request.destination === 'font',
+	({ request, url }) =>
+		request.destination === 'font' ||
+		url.pathname.endsWith('.ttf') ||
+		url.pathname.endsWith('.woff') ||
+		url.pathname.endsWith('.woff2'),
 	new CacheFirst({
 		cacheName: 'font-cache'
 	})
