@@ -23,9 +23,16 @@ cleanupOutdatedCaches();
 
 // Cache audio files with CacheFirst strategy
 registerRoute(
-	({ request }) => request.destination === 'audio',
+	({ request, url }) =>
+		request.destination === 'audio' ||
+		url.pathname.endsWith('.mp3') ||
+		url.pathname.endsWith('.wav') ||
+		url.pathname.endsWith('.ogg'),
 	new CacheFirst({
-		cacheName: 'audio-cache'
+		cacheName: 'audio-cache',
+		matchOptions: {
+			ignoreVary: true
+		}
 	})
 );
 
