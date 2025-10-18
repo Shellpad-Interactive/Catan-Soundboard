@@ -70,7 +70,7 @@ registerRoute(
 
 // Cache audio manifewst
 registerRoute(
-	({ url }) => url.pathname.includes('audio-manifest.json'),
+	({ url }) => url.pathname.endsWith(`audio-manifest.json`),
 	new StaleWhileRevalidate({
 		cacheName: 'manifest-cache'
 	})
@@ -81,7 +81,7 @@ registerRoute(
 // -----------------------------------------------------------
 
 // Define your fallback page (must exist in your build output)
-const offlineFallbackPage = `${import.meta.env.BASE_URL}/index.html`;
+const offlineFallbackPage = `${import.meta.env.BASE_URL}index.html`;
 
 // Ensure the offline fallback is precached (revision: null = don't hash it)
 precache([{ url: offlineFallbackPage, revision: null }]);
