@@ -1,7 +1,7 @@
 /// <reference lib="webworker" />
 import { clientsClaim } from 'workbox-core';
-import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
+import { cleanupOutdatedCaches, precache, precacheAndRoute } from 'workbox-precaching';
+import { NavigationRoute, registerRoute } from 'workbox-routing';
 import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 
 declare let self: ServiceWorkerGlobalScope;
@@ -75,3 +75,31 @@ registerRoute(
 		cacheName: 'manifest-cache'
 	})
 );
+
+// -----------------------------------------------------------
+// 🧩 OFFLINE FALLBACK HANDLER
+// -----------------------------------------------------------
+
+// Define your fallback page (must exist in your build output)
+const offlineFallbackPage = '/index.html';
+
+// Ensure the offline fallback is precached (revision: null = don't hash it)
+precache([{ url: offlineFallbackPage, revision: null }]);
+
+// Use NavigationRoute to handle document navigations
+const navigationRoute = new NavigationRoute(async ({ event }) => {
+	const fetchEvent = event as FetchEvent;
+	try {
+		// If online, try to fetch normally
+		const preloadResponse = await fetchEvent.preloadResponse;
+		if (preloadResponse) return preloadResponse;
+
+		const networkResponse = await fetch(fetchEvent.request);
+		return networkResponse;
+	} catch {
+		// If offline, return fallback page from cache
+		return caches.match(offlineFallbackPage, { ignoreVary: true });
+	}
+});
+
+registerRoute(navigationRoute);
