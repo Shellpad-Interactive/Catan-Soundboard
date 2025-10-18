@@ -3,12 +3,13 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 const basePath = process.argv.includes('dev') ? '' : process.env.BASE_PATH || '';
+// const basePath = '/TEST';
 
 export default defineConfig({
 	plugins: [
 		sveltekit(),
 		VitePWA({
-			base: basePath,
+			base: `${basePath}/`,
 			strategies: 'injectManifest',
 			srcDir: '.',
 			filename: 'service-worker.ts',
