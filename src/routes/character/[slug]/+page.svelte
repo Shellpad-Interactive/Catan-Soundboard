@@ -11,7 +11,6 @@
 	$: character = slug.toLocaleLowerCase();
 
 	let audioManifest: AudioManifest;
-	let audio: { [category: string]: HTMLAudioElement[] } = {};
 	let lastPlayedIndices: { [category: string]: number } = {};
 
 	let lastPlayedSample: HTMLAudioElement;
@@ -23,11 +22,6 @@
 
 		categories = Object.keys(audioManifest[character] ?? []);
 	});
-
-	function loadAudioCategory(category: string) {
-		const categoryPaths = audioManifest[character][category];
-		audio[category] = categoryPaths.map((path) => new Audio(asset(path)));
-	}
 
 	function getCategoryLabel(category: string) {
 		if (category === 'super') {
@@ -56,11 +50,7 @@
 	}
 
 	function getAudioOptions(category: string) {
-		if (!audio[category]) {
-			loadAudioCategory(category);
-		}
-
-		return audio[category];
+		return audioManifest[character][category];
 	}
 
 	function playAudioFromCategory(category: string) {
@@ -75,8 +65,10 @@
 		}
 		lastPlayedIndices[category] = randomIndex;
 
-		const randomSample = audioOptions[randomIndex];
+		const randomAudioOption = audioOptions[randomIndex];
 		lastPlayedSample?.pause();
+
+		let randomSample = new Audio(randomAudioOption);
 		randomSample.play();
 
 		lastPlayedSample = randomSample;
