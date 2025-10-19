@@ -49,26 +49,22 @@
 		}
 	}
 
-	function getAudioOptions(category: string) {
-		return audioManifest[character][category];
-	}
-
 	function playAudioFromCategory(category: string) {
-		const audioOptions = getAudioOptions(category);
+		const audioPaths = audioManifest[character][category];
 
-		let randomIndex = getRandomInt(0, audioOptions.length);
+		let randomIndex = getRandomInt(0, audioPaths.length);
 
 		// Make sure we don't play the same index twice in a row
 		const lastPlayedIndex = lastPlayedIndices[category];
 		if (lastPlayedIndex >= 0) {
-			randomIndex = (lastPlayedIndex + getRandomInt(1, audioOptions.length)) % audioOptions.length;
+			randomIndex = (lastPlayedIndex + getRandomInt(1, audioPaths.length)) % audioPaths.length;
 		}
 		lastPlayedIndices[category] = randomIndex;
 
-		const randomAudioOption = audioOptions[randomIndex];
+		const randomAudioPath = audioPaths[randomIndex];
 		lastPlayedSample?.pause();
 
-		let randomSample = new Audio(randomAudioOption);
+		let randomSample = new Audio(asset(randomAudioPath));
 		randomSample.play();
 
 		lastPlayedSample = randomSample;
