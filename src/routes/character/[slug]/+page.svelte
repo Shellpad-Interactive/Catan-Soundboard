@@ -160,7 +160,7 @@
 					{#if isSpamModeEnabled}
 						<i class="fa-solid fa-check text-green-500"></i>
 					{:else}
-						<i class="fa-solid fa-xmark"></i>
+						<i class="fa-solid fa-ban"></i>
 					{/if}
 				</div>
 			</AudioButton>
