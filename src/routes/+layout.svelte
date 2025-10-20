@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { registerSW } from 'virtual:pwa-register';
 	import '../app.scss';
+	import '@fortawesome/fontawesome-free/css/all.min.css';
 
 	let { children } = $props();
 
