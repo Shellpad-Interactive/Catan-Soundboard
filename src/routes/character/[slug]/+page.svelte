@@ -78,7 +78,7 @@
 
 		const randomAudioPath = audioPaths[randomIndex];
 
-		playAudio(randomAudioPath);
+		playAudio(asset(randomAudioPath));
 	}
 
 	function playLastPlayedAudio() {
@@ -98,7 +98,7 @@
 			lastPlayedSample.pause();
 		}
 
-		let sample = new Audio(asset(audioPath));
+		let sample = new Audio(audioPath);
 		sample.play();
 
 		lastPlayedSample = sample;
