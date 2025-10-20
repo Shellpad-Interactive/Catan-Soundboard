@@ -22,7 +22,9 @@
 		const res = await fetch(asset('/audio-manifest.json'));
 		audioManifest = await res.json();
 
-		categories = Object.keys(audioManifest[character] ?? []);
+		categories = Object.keys(audioManifest[character] ?? []).sort((a, b) =>
+			a.toLocaleLowerCase() === 'overige' ? Number.MAX_SAFE_INTEGER : a.localeCompare(b)
+		);
 
 		const storedSpamMode = localStorage.getItem('SPAM_MODE');
 		if (storedSpamMode) {
