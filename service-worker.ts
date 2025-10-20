@@ -14,12 +14,19 @@ self.addEventListener('message', (event) => {
 	if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
 clientsClaim();
+if (import.meta.env.PROD) {
+	// Precache all assets defined in the manifest
+	precacheAndRoute(self.__WB_MANIFEST || []);
 
-// Precache all assets defined in the manifest
-precacheAndRoute(self.__WB_MANIFEST || []);
+	// Clean old assets
+	cleanupOutdatedCaches();
+} else {
+	console.log('Skipping precache during dev mode');
+}
 
-// Clean old assets
-cleanupOutdatedCaches();
+// -----------------------------------------------------------
+// Caching routes and resources
+// -----------------------------------------------------------
 
 // Cache audio files with CacheFirst strategy
 registerRoute(
@@ -81,14 +88,16 @@ registerRoute(
 );
 
 // -----------------------------------------------------------
-// 🧩 OFFLINE FALLBACK HANDLER
+// OFFLINE FALLBACK HANDLER
 // -----------------------------------------------------------
 
 // Define your fallback page (must exist in your build output)
 const offlineFallbackPage = `${import.meta.env.BASE_URL}index.html`;
 
 // Ensure the offline fallback is precached (revision: null = don't hash it)
-precache([{ url: offlineFallbackPage, revision: null }]);
+if (import.meta.env.PROD) {
+	precache([{ url: offlineFallbackPage, revision: null }]);
+}
 
 // Use NavigationRoute to handle document navigations
 const navigationRoute = new NavigationRoute(async ({ event }) => {
