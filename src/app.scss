@@ -30,3 +30,7 @@ h1 {
 		-1px 1px 0 var(--stroke-color),
 		1px 1px 0 var(--stroke-color);
 }
+
+img {
+	user-select: none;
+}
